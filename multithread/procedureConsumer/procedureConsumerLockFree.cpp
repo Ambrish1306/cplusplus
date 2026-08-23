@@ -14,7 +14,7 @@ void printA()
 {
    while (num <= 10)
    {
-     lock_guard<mutex> lock(mtx);
+     unique_lock<mutex> lock(mtx);
      cv.wait(lock,[]{return num > 10 || num % 3 == 0;});
      if(num > 10 ) break;
      cout<<"PrintA:"<<num++;
@@ -25,7 +25,7 @@ void printB()
 {
    while (num <= 10)
    {
-     lock_guard<mutex> lock(mtx);
+     unique_lock<mutex> lock(mtx);
      //If condition is false → thread sleeps
      //If condition is true → thread continues
      cv.wait(lock,[]{return num > 10 || (num % 2==0 && num % 3 != 0);});
@@ -38,7 +38,7 @@ void printC()
 {
   while (num <= 10)
    {
-     lock_guard<mutex> lock(mtx);
+     unique_lock<mutex> lock(mtx);
      cv.wait(lock,[]{return num > 10 || (num % 2 !=0 && num % 3 != 0);});
      if(num > 10 ) break;
      cout<<"PrintC:"<<num++;

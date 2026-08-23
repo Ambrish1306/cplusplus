@@ -2,7 +2,7 @@
 #include<atomic>    
 #include<iostream>
 
-std::atomic<int> atomicCount=0;
+std::atomic<int> atomicCount=1;
 void printNumber()
 {
     for(int i=0;i<5;i++)

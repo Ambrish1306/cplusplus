@@ -6,8 +6,9 @@
 #include <atomic>
 using namespace std;//group related name and identifier in a single unit
 
-atomic<int> num=0;
+atomic<int> num{1};
 const int MAX = 10;
+mutex mtx; // Mutex to protect the atomic variable during printing
 
 void printOdd() {
     while (true) {
@@ -15,7 +16,10 @@ void printOdd() {
         if (value > MAX)
             break;
         if (value % 2 == 1) {
+            {
+            lock_guard<mutex> lock(mtx); // Locking the atomic variable to ensure thread safety
             cout << "Odd  : " << value << endl;
+            }
             num.fetch_add(1, memory_order_relaxed);
         } else {
             // busy-wait until it's odd
@@ -30,7 +34,10 @@ void printEven() {
         if (value > MAX)
             break;
         if (value % 2 == 0) {
+            {
+            lock_guard<mutex> lock(mtx); // Locking the atomic variable to ensure thread safety
             cout << "Even : " << value << endl;
+            }
             num.fetch_add(1, memory_order_relaxed);
         } else {
             // busy-wait until it's even

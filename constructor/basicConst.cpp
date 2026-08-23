@@ -65,7 +65,7 @@ int main()
     delete bobj;
     return 0;
 }
-/***************************LEARNING */
+/***************************LEARNING*****************************************/
 /* list of question this code will be answer
 1. when we need default const?
 Ans: 
