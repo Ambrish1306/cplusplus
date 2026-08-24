@@ -37,6 +37,7 @@ class Cat: public Animal
     }
 
 } ;
+
 Animal::counte=0;
 
 int main()

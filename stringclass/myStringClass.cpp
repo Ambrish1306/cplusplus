@@ -1,6 +1,6 @@
 #include<stdio.h>
-#include<conio.h>
 #include <string>
+#include <iostream>
 using namespace std;
 class MyString
 {
@@ -40,5 +40,19 @@ bool MyString:: strCmpar(const string &str1,const string &str2)
 
 int main() 
 {
+    MyString mystr("Hello");
+    string str1 = "Hello";
+    string str2 = "World";
+    int length = mystr.strLenth(str1);
+    cout << "Length of the string: " << length << endl;
+
+    bool isEqual = mystr.strCmpar(str1, str2);
+    if (isEqual) {
+        cout << "Strings are equal." << endl;
+    } else {
+        cout << "Strings are not equal." << endl;
+    }
+
+    return 0;
     
 }
